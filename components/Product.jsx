@@ -19,7 +19,7 @@ const Product = ({ product }) => {
     const check =
       cartItems[cartItems.findIndex((item) => item.id === product.id)] || null;
     check ? setIsInCart(true) : setIsInCart(false);
-  }, [cartItems]);
+  }, [cartItems, product.id]);
 
   return (
     <div className="relative w-full h-96 bg-white rounded-lg shadow-2xl">
