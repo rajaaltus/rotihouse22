@@ -1,7 +1,9 @@
 import Head from "next/head";
 import ProductGrid from "../components/ProductGrid";
+import { useCart } from "../hooks/useCart";
 
 export default function Home() {
+  const { itemCount } = useCart();
   return (
     <div>
       <Head>
@@ -12,7 +14,10 @@ export default function Home() {
 
       <main className="w-full h-screen bg-slate-100">
         <div className="max-w-7xl mx-auto py-8">
-          <h1>Welcome</h1>
+          <div className="flex items-center justify-between">
+            <h1>Welcome</h1>
+            <div>Cart ({itemCount})</div>
+          </div>
           <div className="my-8">
             <ProductGrid />
           </div>

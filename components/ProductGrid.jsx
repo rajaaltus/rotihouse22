@@ -1,6 +1,5 @@
 import React from "react";
 import Product from "./Product";
-import { useCart } from "../hooks/useCart";
 const products = [
   {
     id: 1,
@@ -16,6 +15,11 @@ const products = [
     id: 3,
     name: "headphone 3",
     price: 6,
+  },
+  {
+    id: 4,
+    name: "headphone 4",
+    price: 7,
   },
 ];
 
