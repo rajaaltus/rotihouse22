@@ -1,34 +1,35 @@
-import React from "react";
+import React, { Fragment, Suspense, useEffect, useState } from "react";
 import Product from "./Product";
-const products = [
-  {
-    id: 1,
-    name: "headphone 1",
-    price: 12.5,
-  },
-  {
-    id: 2,
-    name: "headphone 2",
-    price: 9.98,
-  },
-  {
-    id: 3,
-    name: "headphone 3",
-    price: 6,
-  },
-  {
-    id: 4,
-    name: "headphone 4",
-    price: 7,
-  },
-];
+import { useProduct } from "../hooks/useProduct";
+import ProductLoader from "./ProductLoader";
+import useCommon from "../hooks/useCommon";
 
 const ProductGrid = () => {
+  const { loading } = useProduct("/dishes");
+  const { filteredProducts, filterKey } = useCommon();
+
   return (
-    <div className="grid grid-cols-3 gap-8 w-full">
-      {products.map((item) => (
-        <Product product={item} key={item.id} />
-      ))}
+    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-8 w-full pb-8 lg:pb-16">
+      {loading && (
+        <>
+          <ProductLoader />
+          <ProductLoader />
+          <ProductLoader />
+          <ProductLoader />
+          <ProductLoader />
+          <ProductLoader />
+        </>
+      )}
+
+      {!loading && filteredProducts && filteredProducts.length > 0 ? (
+        filteredProducts.map((item) => (
+          <Fragment key={item.id}>
+            <Product product={item} key={item.id} />
+          </Fragment>
+        ))
+      ) : (
+        <p>No Products found!</p>
+      )}
     </div>
   );
 };
