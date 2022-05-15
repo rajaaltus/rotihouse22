@@ -21,7 +21,6 @@ const LoginForm = () => {
               type="email"
               name="identifier"
               autoComplete={"Off"}
-              value="raja@gmail.com"
             />
           </div>
           <div className="w-full">
@@ -31,7 +30,6 @@ const LoginForm = () => {
               type="password"
               name="password"
               autoComplete={"Off"}
-              value="raja98424"
             />
           </div>
           <div className="w-full flex items-center justify-between">
