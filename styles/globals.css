@@ -16,4 +16,13 @@
   .btn-lg {
     @apply w-8 h-8 rounded-full flex items-center justify-center bg-green-600 text-white text-center;
   }
+  .btn-full {
+    @apply w-full h-10 rounded-lg flex items-center justify-center  text-center  shadow-md hover:scale-95 active:scale-90 duration-150;
+  }
+  input {
+    @apply w-full rounded-lg bg-gray-50 border border-gray-200 py-2 px-4;
+  }
+  label {
+    @apply text-gray-500;
+  }
 }

@@ -1,8 +1,10 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useCart } from "../hooks/useCart";
 import { PlusCircleIcon, TrashIcon } from "@heroicons/react/solid";
+import { useAuth } from "../context/auth/AuthContext";
 
 const Carter = ({ product }) => {
+  const { authReady } = useAuth();
   const [isInCart, setIsInCart] = useState(false);
   const { increase, addProduct, decrease, cartItems, removeProduct } =
     useCart();

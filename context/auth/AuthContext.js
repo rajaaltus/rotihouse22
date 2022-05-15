@@ -1,19 +1,13 @@
 
-import { createContext, useContext } from 'react';
-import { useReducer } from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { createContext, useContext, useReducer } from 'react';
+import {AuthReducer} from './AuthReducer';
 
 
 
-const inititalState = {
+export const inititalState = {
   authReady: false,
-  jwt: null,
   user: null,
-  login: (data) => {},
-  logout: () => {},
-  auth: () => {},
-  authByOther: (data)=> {}
+  error: null
 }
 export const AuthContext = createContext(inititalState);
 
@@ -23,14 +17,10 @@ export const useAuth = () => {
 }
 
 export const AuthContextProvider = ({children}) => {
-  
-  const [authReady, setAuthReady] = useState(false);
-  const [user, setUser] = useState(null);
-  const [error, setError] = useState(null);
-  // const { openModal, setModalView, closeModal } = useUI();
+  const [state, dispatch] = useReducer(AuthReducer, inititalState)
 
-  const login = (data) =>
-    fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/auth/local`, {
+  const login = (data) => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/local`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -40,68 +30,76 @@ export const AuthContextProvider = ({children}) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        setUser(data.user);
-        setAuthReady(true);
-        setToken(data.jwt);
-        setError(null);
-        closeModal();
+        dispatch({type:'LOGGED_IN', data})
       })
       .catch((error) => {
-        setError(error);
-        setAuthReady(false);
+        dispatch("LOGIN_FAILED")
       });
-
-  const logout = () => {
-    setUser(null);
-    setToken(null);
-    setAuthReady(false);
-  };
-
-  const authorizeMe = (token) =>
-    fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/users/me`, {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setUser(data);
-        setError(null);
-        setAuthReady(true);
-      })
-      .catch((error) => {
-        setError(error);
-        setUser(null);
-        setAuthReady(false);
-      });
-
-  const auth = () => {
-    if (token) {
-      authorizeMe(token);
-    } else {
-      setModalView("LOGIN_VIEW");
-      openModal();
     }
-  };
 
-  const authByOther = (data) => {
-    setUser(data.user);
-    setToken(data.jwt);
-    setError(false);
-    setAuthReady(true);
-  };
+  const authorize = (token) => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/facebook/callback?access_token=${token}`, {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            dispatch({type:'LOGGED_IN', data})
+          })
+          .catch((error) => {
+            dispatch("LOGIN_FAILED")
+          });
+  }
+
+  // const logout = () => {
+  //   setUser(null);
+  //   setToken(null);
+  //   setAuthReady(false);
+  // };
+
+  // const authorizeMe = (token) =>
+  //   fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/users/me`, {
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setUser(data);
+  //       setError(null);
+  //       setAuthReady(true);
+  //     })
+  //     .catch((error) => {
+  //       setError(error);
+  //       setUser(null);
+  //       setAuthReady(false);
+  //     });
+
+  // const auth = () => {
+  //   if (token) {
+  //     authorizeMe(token);
+  //   } else {
+  //     setModalView("LOGIN_VIEW");
+  //     openModal();
+  //   }
+  // };
+
+  // const authByOther = (data) => {
+  //   setUser(data.user);
+  //   setToken(data.jwt);
+  //   setError(false);
+  //   setAuthReady(true);
+  // };
 
 
   const AuthContextValue = {
-    user,
     login,
-    logout,
-    error,
-    auth,
-    authReady,
-    authByOther,
+    authorize,
+    ...state
   }
   return (
     <AuthContext.Provider value={AuthContextValue}>

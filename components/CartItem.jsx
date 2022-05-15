@@ -5,6 +5,8 @@ import { useCart } from "../hooks/useCart";
 import Carter from "./Carter";
 import axios from "axios";
 import { formatCurrency } from "../helpers/utils";
+import { useAuth } from "../context/auth/AuthContext";
+import Modal from "./Modal";
 
 const CartItem = ({ item }) => {
   const { total, removeProduct } = useCart();
