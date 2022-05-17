@@ -7,6 +7,9 @@ module.exports = {
     extend: {
       fontFamily: {
         'sans': ['Poppins', 'sans-serif']
+      },
+      spacing: {
+        "half-screen": "40rem"
       }
     },
   },

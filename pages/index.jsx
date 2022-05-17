@@ -31,7 +31,7 @@ export default function Home() {
           onClose={() => setOpen(false)}
           onOpen={() => setOpen(true)}
         />
-        <div className="w-full">
+        <div className="w-full min-h-screen">
           <Header handleOpen={() => setOpen(true)} />
           <HeroSlider />
           <Categories />
