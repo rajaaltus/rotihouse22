@@ -20,12 +20,11 @@ const Product = ({ product }) => {
     >
       <div className="relative w-full h-full bg-white rounded-lg shadow-2xl">
         <div className="flex flex-col justify-between h-full rounded-full  ">
-          <div className="px-6 py-6 w-full h-full rounded-full text-center">
+          <div className="relative mt-8 mx-auto w-56 h-56 rounded-full text-center">
             <Image
               src={axios.defaults.baseURL + image.url}
               alt="image"
-              width={250}
-              height={250}
+              layout="fill"
               className="object-cover  object-center rounded-full  scale-100 hover:scale-105 duration-500 ease-in-out"
             />
           </div>
