@@ -18,12 +18,20 @@ const Footer = () => {
         </div>
         <div className="flex items-center justify-start space-x-4">
           <Link href={"https://www.facebook.com/rotihouselao"}>
-            <a target="_blank" className="hover:text-indigo-500">
+            <a
+              target="_blank"
+              className="hover:text-indigo-500"
+              aria-label="facebook"
+            >
               <Fb />
             </a>
           </Link>
           <Link href={"https://www.instagram.com/rotihouselao"}>
-            <a target="_blank" className="hover:text-indigo-500">
+            <a
+              target="_blank"
+              className="hover:text-indigo-500"
+              aria-label="instagram"
+            >
               <Ig />
             </a>
           </Link>
