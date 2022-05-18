@@ -25,7 +25,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="w-full h-full bg-slate-100">
+      <main className="w-full h-full bg-white">
         <SideCart
           open={open}
           onClose={() => setOpen(false)}

@@ -8,7 +8,7 @@ const initialState = {
   filterKey: 0,
   filteredProducts: [],
   allProducts: [],
-  totalProducts: 0
+  totalProducts: 0,
 }
 
 export const CommonContextProvider = ({children}) => {
@@ -20,9 +20,17 @@ export const CommonContextProvider = ({children}) => {
   const setFilter = (payload) =>{
     dispatch({type:'SET_FILTER', payload})
   }
+  const typeFilter = (payload) => {
+    dispatch({type:'TYPE_FILTER', payload})
+  }
+  const clearFilter= () => {
+    dispatch({type:'CLEAR_FILTER'})
+  }
   const contextValues = {
     initFilter,
     setFilter,
+    typeFilter,
+    clearFilter,
     ...state
   }
   return (

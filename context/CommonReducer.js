@@ -17,6 +17,19 @@ export const CommonReducer = (state, action) => {
         filterKey: action.payload,
         filteredProducts: state.allProducts.filter((item)=>item.category.id===action.payload)
       }
+    case 'TYPE_FILTER':
+      if(state.filterKey!==0) {
+        state.filteredProducts = state.allProducts.filter((item)=>item.category.id===state.filterKey)
+      } 
+      return {
+        ...state,
+        filteredProducts: state.filteredProducts.filter((item)=>item.type===action.payload)
+      }
+    case "CLEAR_FILTER":
+      return {
+        ...state,
+        filteredProducts: state.allProducts
+      }
     default:
       return state
   }

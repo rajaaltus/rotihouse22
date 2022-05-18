@@ -26,7 +26,7 @@ const HeroSlider = () => {
     <Swiper
       rewind={true}
       navigation={true}
-      className="mySwiper mt-16 shadow-xl h-auto"
+      className="mySwiper mt-16  h-auto"
       modules={[Navigation]}
     >
       {sliderImages.map((slider) => (
