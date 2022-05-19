@@ -119,7 +119,7 @@ const SideCart = ({ open, onClose, onOpen }) => {
                         className="relative w-full bg-green-700 rounded-lg py-3 text-white text-center disabled:bg-slate-500 group"
                         onClick={handleCheckout}
                       >
-                        <span className="pr-2 ">Checkout</span>
+                        <span className="lg:pr-2 pr-8">Checkout</span>
                         <span className="absolute right-2 top-2  bg-green-800 group-disabled:bg-slate-600 px-2 py-1 rounded-lg">
                           {formatCurrency(total)}
                         </span>

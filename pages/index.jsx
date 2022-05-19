@@ -7,6 +7,7 @@ import ProductGrid from "../components/ProductGrid";
 import SideCart from "../components/SideCart";
 import { useCart } from "../hooks/useCart";
 import Footer from "../components/Footer";
+import FloatingCart from "../components/FloatingCart";
 
 export default function Home() {
   const { itemCount } = useCart();
@@ -25,7 +26,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="w-full h-full bg-white">
+      <main className="relative w-full h-full bg-white">
+        <FloatingCart handleOpen={() => setOpen(true)} />
         <SideCart
           open={open}
           onClose={() => setOpen(false)}
