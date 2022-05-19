@@ -9,7 +9,7 @@ const Facebook = () => {
 
   useEffect(() => {
     if (router.query.access_token) {
-      authorize(router.query.access_token);
+      authorize(router.query.access_token, "google");
     }
   }, [router]);
 

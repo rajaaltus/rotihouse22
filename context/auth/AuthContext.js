@@ -37,8 +37,8 @@ export const AuthContextProvider = ({children}) => {
       });
     }
 
-  const authorize = (access_token) => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/facebook/callback?access_token=${access_token}`, {
+  const authorize = (access_token, provider) => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/${provider}/callback?access_token=${access_token}`, {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json"

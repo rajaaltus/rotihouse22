@@ -20,7 +20,7 @@ const Categories = () => {
     typeFilter("non_vegetarian");
   };
   return (
-    <div className="w-full sticky top-16 z-20  lg:w-full group h-40  bg-yellow-400 flex flex-col">
+    <div className="w-full lg:w-full group h-40  bg-yellow-400 flex flex-col">
       <div className="relative flex items-center  justify-center lg:justify-between h-12 lg:h-16  w-full  lg:w-64 mx-auto mt-4 text-yellow-400">
         {isVeg !== "null" && (
           <div className="absolute right-16 top-1 lg:-right-8 lg:top-3 text-gray-700">

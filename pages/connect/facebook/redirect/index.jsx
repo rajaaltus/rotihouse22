@@ -8,8 +8,9 @@ const Facebook = () => {
   const { authorize, authReady } = useAuth();
 
   useEffect(() => {
+    console.log(router.query.access_token);
     if (router.query.access_token) {
-      authorize(router.query.access_token);
+      authorize(router.query.access_token, facebook);
     }
   }, [router]);
 

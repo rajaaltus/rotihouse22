@@ -31,10 +31,14 @@ export default function Home() {
           onClose={() => setOpen(false)}
           onOpen={() => setOpen(true)}
         />
-        <div className="w-full min-h-screen">
-          <Header handleOpen={() => setOpen(true)} />
-          <HeroSlider />
-          <Categories />
+        <div className=" w-full min-h-screen">
+          <div>
+            <Header handleOpen={() => setOpen(true)} />
+            <HeroSlider />
+          </div>
+          <div className=" sticky top-0 z-20">
+            <Categories />
+          </div>
           <div className="my-8 px-8 lg:max-w-7xl mx-auto lg:px-0 min-h-screen">
             <ProductGrid />
           </div>
