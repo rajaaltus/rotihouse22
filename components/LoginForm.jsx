@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useAuth } from "../context/auth/AuthContext";
 import Link from "next/link";
+import { useAuth } from "../hooks/useAuth";
 
 const LoginForm = () => {
   const { login, authReady } = useAuth();

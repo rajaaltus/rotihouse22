@@ -35,7 +35,7 @@ export default function Home() {
           <Header handleOpen={() => setOpen(true)} />
           <HeroSlider />
           <Categories />
-          <div className="my-8 px-8 lg:max-w-7xl mx-auto lg:px-0">
+          <div className="my-8 px-8 lg:max-w-7xl mx-auto lg:px-0 min-h-screen">
             <ProductGrid />
           </div>
         </div>

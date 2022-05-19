@@ -5,21 +5,27 @@ import useCommon from "../hooks/useCommon";
 
 const Categories = () => {
   const { categories, loading } = useCategories("/categories");
-  const {
-    setFilter,
-    totalProducts,
-    typeFilter,
-    clearFilter,
-    filteredProducts,
-  } = useCommon();
+  const { setFilter, totalProducts, typeFilter, clearFilter } = useCommon();
   const [isVeg, setIsVeg] = useState("veg" | "non-veg" | "null");
+  const handleClear = () => {
+    setIsVeg("null");
+    clearFilter();
+  };
+  const handleVeg = () => {
+    setIsVeg("veg");
+    typeFilter("vegetarian");
+  };
+  const handleNonVeg = () => {
+    setIsVeg("non-veg");
+    typeFilter("non_vegetarian");
+  };
   return (
-    <div className="w-full  lg:w-full group h-40  bg-yellow-400 flex flex-col">
+    <div className="w-full sticky top-16 z-20  lg:w-full group h-40  bg-yellow-400 flex flex-col">
       <div className="relative flex items-center  justify-center lg:justify-between h-12 lg:h-16  w-full  lg:w-64 mx-auto mt-4 text-yellow-400">
         {isVeg !== "null" && (
           <div className="absolute right-16 top-1 lg:-right-8 lg:top-3 text-gray-700">
             <button
-              onClick={() => [setIsVeg("null"), clearFilter()]}
+              onClick={handleClear}
               className="underline hover:text-gray-800"
             >
               <XCircleIcon className="w-6 h-6 text-gray-700" />
@@ -27,8 +33,8 @@ const Categories = () => {
           </div>
         )}
         <button
-          onClick={() => [setIsVeg("veg"), typeFilter("vegetarian")]}
-          className="relative w-1/4 lg:w-1/2 border-r border-yellow-400 h-full  bg-gray-800   hover:bg-gray-900 duration-200  rounded-l-full"
+          onClick={handleVeg}
+          className="relative w-1/4 lg:w-1/2 border-r font-semibold border-yellow-400 h-full  bg-gray-800   hover:bg-gray-900 duration-200  rounded-l-full shadow-md shadow-yellow-200"
         >
           {isVeg === "veg" && (
             <div className="absolute top-1 right-2">
@@ -38,8 +44,8 @@ const Categories = () => {
           Veg
         </button>
         <button
-          onClick={() => [setIsVeg("non-veg"), typeFilter("non_vegetarian")]}
-          className="relative w-1/4 lg:w-1/2 h-full  duration-200 bg-gray-800 hover:bg-gray-900 rounded-r-full"
+          onClick={handleNonVeg}
+          className="relative w-1/4 lg:w-1/2 h-full font-semibold  duration-200 bg-gray-800 hover:bg-gray-900 rounded-r-full shadow-md shadow-yellow-200"
         >
           {isVeg === "non-veg" && (
             <div className="absolute top-1 right-2">
@@ -53,7 +59,7 @@ const Categories = () => {
         {!loading && categories && categories.length > 0 && (
           <>
             <button
-              className="relative text-black bg-transparent border-2 border-yellow-500 rounded-full px-6 py-2 hover:scale-105 hover:drop-shadow-lg duration-200 active:scale-95"
+              className="relative text-black font-semibold bg-transparent border-2 border-yellow-500 rounded-full px-6 py-2 hover:scale-105 hover:drop-shadow-lg duration-200 active:scale-95"
               onClick={() => setFilter(0)}
             >
               <span className="px-4"> {"All"}</span>
@@ -69,7 +75,7 @@ const Categories = () => {
             <Fragment key={item.id}>
               <button
                 key={item.id}
-                className="relative text-black bg-transparent border-2 border-yellow-500 rounded-full px-6 py-2 hover:scale-105 hover:drop-shadow-lg duration-200 active:scale-95"
+                className="relative text-black font-semibold bg-transparent border-2 border-yellow-500 rounded-full px-6 py-2 hover:scale-105 hover:drop-shadow-lg duration-200 active:scale-95"
                 onClick={() => setFilter(item.id)}
               >
                 {item.name}

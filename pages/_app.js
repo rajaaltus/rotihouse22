@@ -8,11 +8,11 @@ function MyApp({ Component, pageProps }) {
   axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL
   return (
     <CartContextProvider>
-      <AuthContextProvider>
           <CommonContextProvider>
+      <AuthContextProvider>
             <Component {...pageProps} />
-          </CommonContextProvider>
         </AuthContextProvider>
+          </CommonContextProvider>
     </CartContextProvider>
   )
 }

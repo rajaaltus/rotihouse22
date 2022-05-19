@@ -11,10 +11,10 @@ export const inititalState = {
 }
 export const AuthContext = createContext(inititalState);
 
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  return context;
-}
+// export const useAuth = () => {
+//   const context = useContext(AuthContext);
+//   return context;
+// }
 
 export const AuthContextProvider = ({children}) => {
   const [state, dispatch] = useReducer(AuthReducer, inititalState)
@@ -37,8 +37,8 @@ export const AuthContextProvider = ({children}) => {
       });
     }
 
-  const authorize = (token) => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/facebook/callback?access_token=${token}`, {
+  const authorize = (access_token) => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/facebook/callback?access_token=${access_token}`, {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json"
@@ -53,14 +53,8 @@ export const AuthContextProvider = ({children}) => {
           });
   }
 
-  // const logout = () => {
-  //   setUser(null);
-  //   setToken(null);
-  //   setAuthReady(false);
-  // };
-
-  // const authorizeMe = (token) =>
-  //   fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/users/me`, {
+  // const me = (token) => {
+  //   fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/me=${token}`, {
   //     headers: {
   //       Accept: "application/json",
   //       "Content-Type": "application/json",
@@ -69,36 +63,18 @@ export const AuthContextProvider = ({children}) => {
   //   })
   //     .then((res) => res.json())
   //     .then((data) => {
-  //       setUser(data);
-  //       setError(null);
-  //       setAuthReady(true);
+  //       dispatch({type:'LOGGED_IN', data})
   //     })
   //     .catch((error) => {
-  //       setError(error);
-  //       setUser(null);
-  //       setAuthReady(false);
+  //       dispatch("LOGIN_FAILED")
   //     });
-
-  // const auth = () => {
-  //   if (token) {
-  //     authorizeMe(token);
-  //   } else {
-  //     setModalView("LOGIN_VIEW");
-  //     openModal();
-  //   }
-  // };
-
-  // const authByOther = (data) => {
-  //   setUser(data.user);
-  //   setToken(data.jwt);
-  //   setError(false);
-  //   setAuthReady(true);
-  // };
+  // }
 
 
   const AuthContextValue = {
     login,
     authorize,
+    // me,
     ...state
   }
   return (

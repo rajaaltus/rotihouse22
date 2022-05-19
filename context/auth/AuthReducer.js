@@ -3,8 +3,8 @@
 export const AuthReducer = (state,action) => {
   switch(action.type) {
     case 'LOGGED_IN':
-      console.log(action.data)
       sessionStorage.setItem(`token`,(action.data.jwt))
+      sessionStorage.setItem(`user`,JSON.stringify(action.data.user))
       state.user = action.data.user
       state.authReady = true
       state.error = null

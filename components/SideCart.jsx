@@ -5,17 +5,19 @@ import { useCart } from "../hooks/useCart";
 import CartItem from "./CartItem";
 import { formatCurrency } from "../helpers/utils";
 import EmptyCart from "./icons/EmptyCart";
-import { useAuth } from "../context/auth/AuthContext";
 import Modal from "./Modal";
 import LoginForm from "./LoginForm";
+import { useRouter } from "next/router";
+import { useAuth } from "../hooks/useAuth";
 
 const SideCart = ({ open, onClose, onOpen }) => {
   const { cartItems, total } = useCart();
   const [show, setShow] = useState(false);
   const { authReady } = useAuth();
+  const router = useRouter();
 
   const handleCheckout = () => {
-    authReady ? "Hi" : setShow(true);
+    authReady ? router.push("/checkout") : setShow(true);
   };
 
   const handleClose = () => {
@@ -106,7 +108,12 @@ const SideCart = ({ open, onClose, onOpen }) => {
                       </div>
                     )}
 
-                    <div className="px-8">
+                    <div className="relative px-8">
+                      {authReady && (
+                        <div className="absolute top-1/2">
+                          <span>Login Success &amp; Ready to checkout</span>
+                        </div>
+                      )}
                       <button
                         disabled={cartItems.length == 0}
                         className="relative w-full bg-green-700 rounded-lg py-3 text-white text-center disabled:bg-slate-500 group"
