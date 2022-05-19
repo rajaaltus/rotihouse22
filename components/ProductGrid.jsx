@@ -9,7 +9,7 @@ const ProductGrid = () => {
   const { filteredProducts } = useCommon();
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-8 w-full pb-8 lg:pb-16">
+    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-8 w-full pb-8 lg:pb-16 ">
       {loading && (
         <>
           <ProductLoader />

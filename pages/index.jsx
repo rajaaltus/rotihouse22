@@ -39,7 +39,7 @@ export default function Home() {
           <div className=" sticky top-0 z-20">
             <Categories />
           </div>
-          <div className="my-8 px-8 lg:max-w-7xl mx-auto lg:px-0 min-h-screen">
+          <div className="mb-8 mt-24 lg:mt-32 px-8 lg:max-w-7xl mx-auto lg:px-0 min-h-screen">
             <ProductGrid />
           </div>
         </div>

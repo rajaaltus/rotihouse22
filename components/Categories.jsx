@@ -2,68 +2,26 @@ import { CheckCircleIcon, XCircleIcon } from "@heroicons/react/solid";
 import React, { Fragment, useState } from "react";
 import { useCategories } from "../hooks/useCategories";
 import useCommon from "../hooks/useCommon";
+import FoodType from "./FoodType";
 
 const Categories = () => {
   const { categories, loading } = useCategories("/categories");
-  const { setFilter, totalProducts, typeFilter, clearFilter } = useCommon();
-  const [isVeg, setIsVeg] = useState("veg" | "non-veg" | "null");
-  const handleClear = () => {
-    setIsVeg("null");
-    clearFilter();
-  };
-  const handleVeg = () => {
-    setIsVeg("veg");
-    typeFilter("vegetarian");
-  };
-  const handleNonVeg = () => {
-    setIsVeg("non-veg");
-    typeFilter("non_vegetarian");
-  };
+  const { setFilter, totalProducts } = useCommon();
+
   return (
-    <div className="w-full lg:w-full group h-40  bg-yellow-400 flex flex-col">
-      <div className="relative flex items-center  justify-center lg:justify-between h-12 lg:h-16  w-full  lg:w-64 mx-auto mt-4 text-yellow-400">
-        {isVeg !== "null" && (
-          <div className="absolute right-16 top-1 lg:-right-8 lg:top-3 text-gray-700">
-            <button
-              onClick={handleClear}
-              className="underline hover:text-gray-800"
-            >
-              <XCircleIcon className="w-6 h-6 text-gray-700" />
-            </button>
-          </div>
-        )}
-        <button
-          onClick={handleVeg}
-          className="relative w-1/4 lg:w-1/2 border-r font-semibold border-yellow-400 h-full  bg-gray-800   hover:bg-gray-900 duration-200  rounded-l-full shadow-md shadow-yellow-200"
-        >
-          {isVeg === "veg" && (
-            <div className="absolute top-1 right-2">
-              <CheckCircleIcon className="w-4 h-4 text-green-600" />
-            </div>
-          )}
-          Veg
-        </button>
-        <button
-          onClick={handleNonVeg}
-          className="relative w-1/4 lg:w-1/2 h-full font-semibold  duration-200 bg-gray-800 hover:bg-gray-900 rounded-r-full shadow-md shadow-yellow-200"
-        >
-          {isVeg === "non-veg" && (
-            <div className="absolute top-1 right-2">
-              <CheckCircleIcon className="w-4 h-4 text-green-600" />
-            </div>
-          )}
-          Non-Veg
-        </button>
+    <div className="relative w-full lg:w-full group h-24  bg-yellow-400 flex flex-col shadow-xl">
+      <div className="absolute z-20 -bottom-12 w-full">
+        <FoodType />
       </div>
       <div className="flex items-center overflow-x-scroll scrollbar-hide whitespace-nowrap lg:justify-center space-x-8 h-full px-8 group-hover:lg:translate-x-0 group-hover:-translate-x-8 duration-700">
         {!loading && categories && categories.length > 0 && (
           <>
             <button
-              className="relative text-black font-semibold bg-transparent border-2 border-yellow-500 rounded-full px-6 py-2 hover:scale-105 hover:drop-shadow-lg duration-200 active:scale-95"
+              className="relative text-black font-semibold bg-transparent border-2 border-yellow-500 rounded-full px-6 py-2 hover:scale-105 hover:drop-shadow-lg duration-200 active:scale-95 flex items-center space-x-2"
               onClick={() => setFilter(0)}
             >
-              <span className="px-4"> {"All"}</span>
-              <span className="absolute -top-3 right-3 bg-slate-200 w-6 h-6  flex items-center justify-center rounded-full text-sm">
+              <span className=""> {"All"}</span>
+              <span className=" bg-yellow-100 w-6 h-6  flex items-center justify-center rounded-full text-sm">
                 {totalProducts}
               </span>
             </button>
@@ -75,11 +33,11 @@ const Categories = () => {
             <Fragment key={item.id}>
               <button
                 key={item.id}
-                className="relative text-black font-semibold bg-transparent border-2 border-yellow-500 rounded-full px-6 py-2 hover:scale-105 hover:drop-shadow-lg duration-200 active:scale-95"
+                className="relative text-black font-semibold bg-transparent border-2 border-yellow-500 rounded-full px-6 py-2 hover:scale-105 hover:drop-shadow-lg duration-200 active:scale-95 flex items-center space-x-2"
                 onClick={() => setFilter(item.id)}
               >
-                {item.name}
-                <span className="absolute -top-3 right-3 bg-slate-200 w-6 h-6  flex items-center justify-center rounded-full text-sm">
+                <span>{item.name}</span>
+                <span className=" bg-yellow-100 text-yellow-700 w-6 h-6 rounded-full flex items-center justify-center text-sm">
                   {item.dishes?.length}
                 </span>
               </button>

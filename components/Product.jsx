@@ -18,7 +18,7 @@ const Product = ({ product }) => {
       leaveFrom="scale-1"
       leaveTo="scale-0"
     >
-      <div className="relative w-full h-full bg-white rounded-lg shadow-2xl">
+      <div className="relative w-full h-full bg-white rounded-lg shadow-2xl snap-start">
         <div className="flex flex-col justify-between h-full rounded-full">
           <div className="relative mt-8 mx-auto w-48 h-48 rounded-full text-center">
             <Image
