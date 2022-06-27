@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { useAuth } from "../hooks/useAuth";
+import Image from "next/image";
 
 const LoginForm = () => {
   const { login, authReady } = useAuth();
@@ -12,6 +13,34 @@ const LoginForm = () => {
 
   return (
     <div className="w-full  h-auto">
+      <div className="w-full py-4">
+        <div className="flex items-center justify-between space-x-4">
+          <Link href={`${process.env.NEXT_PUBLIC_API_URL}/connect/facebook`}>
+            <a className="btn-full bg-indigo-700 text-white hover:bg-indigo-800 flex items-center space-x-2">
+              <Image src="/images/fb.svg" alt={"fb"} width={32} height={32} />
+              <span> Facebook</span>
+            </a>
+          </Link>
+          <Link href={`${process.env.NEXT_PUBLIC_API_URL}/connect/google`}>
+            <a className="btn-full bg-white text-gray-700 hover:bg-gray-100 flex items-center space-x-2">
+              <Image
+                src="/images/google.svg"
+                alt={"fb"}
+                width={26}
+                height={26}
+              />
+              <span>Google</span>
+            </a>
+          </Link>
+        </div>
+      </div>
+      <div className="w-full border-b border-gray-200 my-8">
+        <div className="bg-gray-200 relative">
+          <div className="absolute -top-3 w-full text-center">
+            <span className="bg-white p-2">OR</span>
+          </div>
+        </div>
+      </div>
       <form onSubmit={handleSubmit(submitHandler)}>
         <div className="flex flex-col items-center justify-between space-y-4 w-full">
           <div className="w-full">
@@ -53,29 +82,6 @@ const LoginForm = () => {
             >
               Sign in
             </button>
-          </div>
-          <div className="w-full border-b border-gray-200">
-            <div className="bg-gray-200 relative">
-              <div className="absolute -top-3 w-full text-center">
-                <span className="bg-white p-2">OR</span>
-              </div>
-            </div>
-          </div>
-          <div className="w-full py-4">
-            <div className="flex items-center justify-between space-x-4">
-              <Link
-                href={`${process.env.NEXT_PUBLIC_API_URL}/connect/facebook`}
-              >
-                <a className="btn-full bg-indigo-700 text-white hover:bg-indigo-800">
-                  Facebook
-                </a>
-              </Link>
-              <Link href={`${process.env.NEXT_PUBLIC_API_URL}/connect/google`}>
-                <a className="btn-full bg-white text-gray-700 hover:bg-gray-100">
-                  Google
-                </a>
-              </Link>
-            </div>
           </div>
         </div>
       </form>
