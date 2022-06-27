@@ -26,6 +26,7 @@ const FoodType = () => {
           <button
             onClick={handleClear}
             className="underline hover:text-gray-800"
+            aria-label="clear-filter"
           >
             <XCircleIcon className="w-6 h-6 text-gray-700" />
           </button>
@@ -46,7 +47,7 @@ const FoodType = () => {
         onClick={handleNonVeg}
         className="relative w-1/4 lg:w-1/2 h-full text-sm lg:text-md font-semibold  duration-200 bg-gray-800 hover:bg-gray-900 rounded-br-full shadow-md shadow-yellow-200"
         name="clear-filter"
-        aria-label="clear-filter"
+        aria-label="non-veg"
       >
         {isVeg === "non-veg" && (
           <div className="absolute top-1 right-2">
