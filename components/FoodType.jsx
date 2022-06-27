@@ -46,6 +46,7 @@ const FoodType = () => {
         onClick={handleNonVeg}
         className="relative w-1/4 lg:w-1/2 h-full text-sm lg:text-md font-semibold  duration-200 bg-gray-800 hover:bg-gray-900 rounded-br-full shadow-md shadow-yellow-200"
         name="clear-filter"
+        aria-label="clear-filter"
       >
         {isVeg === "non-veg" && (
           <div className="absolute top-1 right-2">
