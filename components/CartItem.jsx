@@ -34,8 +34,11 @@ const CartItem = ({ item }) => {
       </div>
 
       <div className="flex flex-col w-full overflow-hidden">
-        <span className="text-sm text-gray-500 mb-2.5">
-          Unit price : &nbsp;
+        <span className="text-md font-semibold text-indigo-800">
+          {item?.name}
+        </span>
+        <span className="text-xs font-medium uppercase text-gray-500 mb-2.5">
+          Unit price &middot;&nbsp;
           {formatCurrency(item.price)}
         </span>
 

@@ -71,9 +71,6 @@ const LoginForm = () => {
               />
               <label htmlFor="remember">Remember me</label>
             </div>
-            <div className="">
-              <p>Forgot your password?</p>
-            </div>
           </div>
           <div className="w-full py-4">
             <button

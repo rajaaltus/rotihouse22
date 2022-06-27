@@ -10,7 +10,6 @@ import Footer from "../components/Footer";
 import FloatingCart from "../components/FloatingCart";
 
 export default function Home() {
-  const { itemCount } = useCart();
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
