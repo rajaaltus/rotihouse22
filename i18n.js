@@ -15,7 +15,7 @@ i18n.use(Backend).use(LanguageDetector).use(initReactI18next).init({
     formatSeparator: ','
   },
   react: {
-    wait: true,
+    // wait: true,
     useSuspense: false,
   }
 })
