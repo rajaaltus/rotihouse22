@@ -1,13 +1,27 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useCart } from "../hooks/useCart";
 import Logo from "./Logo";
-
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 interface HeaderProps {
   handleOpen: () => void;
 }
 
 const Header: FC<HeaderProps> = ({ handleOpen }) => {
+  const [selectedLang, setSelectedLang] = useState("");
+  const { i18n, t } = useTranslation(["common"]);
   const { itemCount } = useCart();
+  const handleLanguage = (e: any) => {
+    i18n.changeLanguage(e.target.value);
+    setSelectedLang(e.target.value);
+  };
+  useEffect(() => {
+    const val = localStorage.getItem("i18nextLng") || "";
+    setSelectedLang(val);
+    if (val?.length > 2) {
+      i18next.changeLanguage("en");
+    }
+  }, []);
   return (
     <div className="sticky top-0 z-50 w-full h-16  bg-black px-4">
       <div className="max-w-7xl mx-auto text-white flex items-center justify-between h-full">
@@ -16,10 +30,24 @@ const Header: FC<HeaderProps> = ({ handleOpen }) => {
             <Logo />
           </div>
           <span className="text-2xl font-semibold tracking-wide">
-            Rotihouse
+            {t("rotihouse")}
           </span>
         </div>
-        <button onClick={handleOpen}>Cart ({itemCount})</button>
+        <div className="flex items-center space-x-2">
+          <select
+            className="bg-black"
+            onChange={handleLanguage}
+            value={selectedLang}
+          >
+            <option value="en">EN</option>
+            <option value="lo">LA</option>
+          </select>
+
+          <div className="text-gray-600"> | </div>
+          <button onClick={handleOpen}>
+            {t("cart")} ({itemCount})
+          </button>
+        </div>
       </div>
     </div>
   );

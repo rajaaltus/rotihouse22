@@ -4,9 +4,11 @@ import Link from "next/link";
 import { useAuth } from "../hooks/useAuth";
 import Image from "next/image";
 import { LoginRequest } from "../helpers/types";
+import { useTranslation } from "react-i18next";
 
 const LoginForm = () => {
   const { login, authReady } = useAuth();
+  const { t } = useTranslation(["login"]);
   const { register, handleSubmit } = useForm<LoginRequest>();
   const submitHandler = (data: LoginRequest) => {
     login(data);
@@ -15,11 +17,11 @@ const LoginForm = () => {
   return (
     <div className="w-full  h-auto">
       <div className="w-full py-4">
-        <div className="flex items-center justify-between space-x-4">
+        <div className="flex flex-col items-center justify-between space-y-4">
           <Link href={`${process.env.NEXT_PUBLIC_API_URL}/connect/facebook`}>
             <a className="btn-full bg-indigo-700 text-white hover:bg-indigo-800 flex items-center space-x-2">
               <Image src="/images/fb.svg" alt={"fb"} width={32} height={32} />
-              <span> Facebook</span>
+              <span>{t("facebook")}</span>
             </a>
           </Link>
           <Link href={`${process.env.NEXT_PUBLIC_API_URL}/connect/google`}>
@@ -30,7 +32,7 @@ const LoginForm = () => {
                 width={26}
                 height={26}
               />
-              <span>Google</span>
+              <span>{t("google")}</span>
             </a>
           </Link>
         </div>
@@ -38,14 +40,14 @@ const LoginForm = () => {
       <div className="w-full border-b border-gray-200 my-8">
         <div className="bg-gray-200 relative">
           <div className="absolute -top-3 w-full text-center">
-            <span className="bg-white p-2">OR</span>
+            <span className="bg-white p-2">{t("or")}</span>
           </div>
         </div>
       </div>
       <form onSubmit={handleSubmit(submitHandler)}>
         <div className="flex flex-col items-center justify-between space-y-4 w-full">
           <div className="w-full">
-            <label htmlFor="identifier">Email address</label>
+            <label htmlFor="identifier">{t("email address")}</label>
             <input
               {...register("identifier", { required: true })}
               type="email"
@@ -54,7 +56,7 @@ const LoginForm = () => {
             />
           </div>
           <div className="w-full">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">{t("password")}</label>
             <input
               {...register("password", { required: true })}
               type="password"
@@ -70,7 +72,7 @@ const LoginForm = () => {
                 id="remember"
                 className="w-8"
               />
-              <label htmlFor="remember">Remember me</label>
+              <label htmlFor="remember">{t("remember me")}</label>
             </div>
           </div>
           <div className="w-full py-4">
@@ -78,7 +80,7 @@ const LoginForm = () => {
               type="submit"
               className="btn-full text-white bg-green-600 hover:bg-green-700"
             >
-              Sign in
+              {t("login")}
             </button>
           </div>
         </div>

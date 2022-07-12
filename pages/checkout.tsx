@@ -4,9 +4,11 @@ import { formatCurrency } from "../helpers/util";
 import WhatsappIcon from "../components/icons/whatsapp-icon";
 import { useCart } from "../hooks/useCart";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 const Checkout = () => {
   const { cartItems: items, total } = useCart();
+  const { t } = useTranslation(["common"]);
   const [downloadLink, setDownloadLink] = useState("");
   const [user, setUser] = useState({ username: "" });
 
@@ -39,7 +41,7 @@ const Checkout = () => {
   }, []);
   return (
     <div className="mt-48 w-full px-6 lg:px-32 h-full">
-      {user && <Address username={user?.username || "Customer"} />}
+      {user && <Address username={user?.username || t("customer")} />}
       {items?.map((item, index) => (
         <div
           key={index}
@@ -49,7 +51,7 @@ const Checkout = () => {
         </div>
       ))}
       <div className="flex items-center justify-between text-md lg:text-2xl font-semibold py-2 w-full">
-        <p>Total</p>
+        <p>{t("total")}</p>
         {formatCurrency(total)}
       </div>
 
@@ -61,7 +63,7 @@ const Checkout = () => {
           href={downloadLink}
           className="capitalize bg-gray-600 rounded-full px-8 h-12 text-white font-semibold tracking-wide flex items-center "
         >
-          download
+          {t("download")}
         </a>
         <ReactWhatsapp
           number="+8562058026838"
@@ -71,7 +73,7 @@ const Checkout = () => {
           element="button"
         >
           <span className="capitalize bg-gray-600 rounded-full px-8 h-12 text-white font-semibold tracking-wide flex items-center space-x-1">
-            <WhatsappIcon /> <span>Send order</span>
+            <WhatsappIcon /> <span>{t("send order")}</span>
           </span>
         </ReactWhatsapp>
       </div>
@@ -79,7 +81,7 @@ const Checkout = () => {
       <div className="w-full flex items-center justify-center mt-16">
         <Link href="/">
           <a className="py-3 w-48 bg-yellow-400 text-black rounded-lg font-semibold shadow-lg text-center">
-            Go to home
+            {t("go to home")}
           </a>
         </Link>
       </div>
@@ -102,12 +104,13 @@ const OrderItem = ({ index, item }: any) => {
 };
 
 const Address = ({ username }: any) => {
+  const { t } = useTranslation(["common"]);
   return (
     <>
-      <h3 className="text-xl font-semibold py-2">
-        Dear <span className="text-indigo-700"> {username},</span>
+      <h3 className="text-2xl font-semibold py-2">
+        {t("dear")} <span className="text-indigo-700"> {username},</span>
       </h3>
-      <p className="pb-4">Please check your order</p>
+      <p className="pb-4 text-lg">{t("please check your order")}</p>
     </>
   );
 };

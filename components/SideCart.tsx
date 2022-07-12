@@ -9,6 +9,7 @@ import LoginForm from "./LoginForm";
 import { useRouter } from "next/router";
 import { useAuth } from "../hooks/useAuth";
 import Modal from "./Modal";
+import { useTranslation } from "react-i18next";
 
 interface SideCartProps {
   open: boolean;
@@ -17,6 +18,7 @@ interface SideCartProps {
 }
 
 const SideCart: FC<SideCartProps> = ({ open, onClose, onOpen }) => {
+  const { t } = useTranslation(["common"]);
   const { cartItems, total } = useCart();
   const [show, setShow] = useState(false);
   const { authReady } = useAuth();
@@ -99,8 +101,7 @@ const SideCart: FC<SideCartProps> = ({ open, onClose, onOpen }) => {
                   <div className="flex h-full flex-col justify-between overflow-y-scroll bg-white py-6 shadow-xl">
                     <div className="px-4 sm:px-6">
                       <Dialog.Title className="text-lg font-medium text-gray-900">
-                        {" "}
-                        Shopping Cart{" "}
+                        {t("shopping cart")}
                       </Dialog.Title>
                     </div>
                     {cartItems.length > 0 ? (
@@ -114,7 +115,7 @@ const SideCart: FC<SideCartProps> = ({ open, onClose, onOpen }) => {
                         <div className="w-full h-full flex flex-col items-center justify-center space-y-2">
                           <EmptyCart />
                           <span className="w-full text-center  font-bold pt-4 text-slate-500">
-                            Your Cart is Empty
+                            {t("your cart is empty")}
                           </span>
                         </div>
                       </div>
@@ -131,7 +132,7 @@ const SideCart: FC<SideCartProps> = ({ open, onClose, onOpen }) => {
                         className="relative w-full bg-green-700 rounded-lg py-3 text-white text-center disabled:bg-slate-500 group"
                         onClick={handleCheckout}
                       >
-                        <span className="lg:pr-2 pr-8">Checkout</span>
+                        <span className="lg:pr-2 pr-8">{t("checkout")}</span>
                         <span className="absolute right-2 top-2  bg-green-800 group-disabled:bg-slate-600 px-2 py-1 rounded-lg">
                           {formatCurrency(total)}
                         </span>

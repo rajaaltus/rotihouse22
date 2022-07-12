@@ -2,8 +2,10 @@ import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import Logo from "../../../../components/Logo";
 import { useAuth } from "../../../../hooks/useAuth";
+import { useTranslation } from "react-i18next";
 
 const Facebook = () => {
+  const { t } = useTranslation(["common"]);
   const router = useRouter();
   const { authorize, authReady } = useAuth();
 
@@ -27,7 +29,7 @@ const Facebook = () => {
             <Logo />
           </div>
           <span className="text-2xl font-bold tracking-wide animate-pulse">
-            Authenticating... Please Wait...
+            {t("please wait")}
           </span>
         </div>
       </div>

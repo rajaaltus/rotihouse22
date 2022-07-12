@@ -1,6 +1,7 @@
 import React, { FC, useState } from "react";
 import { CheckCircleIcon, XCircleIcon } from "@heroicons/react/solid";
 import useCommon from "../hooks/useCommon";
+import { useTranslation } from "react-i18next";
 
 interface IFoodType {
   foodType: "vegetarian" | "non_vegetarian" | "null";
@@ -8,6 +9,7 @@ interface IFoodType {
 const FoodType = () => {
   const { typeFilter, clearFilter } = useCommon();
   const [isVeg, setIsVeg] = useState("null");
+  const { t } = useTranslation(["common"]);
 
   const handleClear = () => {
     setIsVeg("null");
@@ -44,7 +46,7 @@ const FoodType = () => {
             <CheckCircleIcon className="w-4 h-4 text-green-600" />
           </div>
         )}
-        Veg
+        {t("veg")}
       </button>
       <button
         onClick={handleNonVeg}
@@ -57,7 +59,7 @@ const FoodType = () => {
             <CheckCircleIcon className="w-4 h-4 text-green-600" />
           </div>
         )}
-        Non-Veg
+        {t("non-veg")}
       </button>
     </div>
   );
