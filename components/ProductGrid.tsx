@@ -5,7 +5,7 @@ import ProductLoader from "./ProductLoader";
 import useCommon from "../hooks/useCommon";
 import { CartItem } from "../helpers/types";
 const ProductGrid = () => {
-  const { loading } = useProduct("/dishes");
+  const { loading } = useProduct("/dishes?active=true&_sort=new:desc");
   const { filteredProducts } = useCommon();
 
   return (

@@ -29,7 +29,7 @@ const Header: FC<HeaderProps> = ({ handleOpen }) => {
           <div className="bg-yellow-400 w-12 h-auto px-2 py-1 rounded-sm">
             <Logo />
           </div>
-          <span className="text-2xl font-semibold tracking-wide">
+          <span className="brand text-2xl font-semibold tracking-wide">
             {t("rotihouse")}
           </span>
         </div>

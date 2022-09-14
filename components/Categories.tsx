@@ -5,7 +5,7 @@ import useCommon from "../hooks/useCommon";
 import FoodType from "./FoodType";
 
 const Categories = () => {
-  const { categories, loading } = useCategories("/categories");
+  const { categories, loading } = useCategories("/categories?isactive=true");
   const { setFilter, totalProducts } = useCommon();
 
   return (

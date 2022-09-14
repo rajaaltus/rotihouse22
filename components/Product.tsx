@@ -11,7 +11,7 @@ interface ProductProps {
   key: Number;
 }
 const Product: FC<ProductProps> = ({ product }) => {
-  const { name, price, image } = product;
+  const { name, price, image, new: isNew } = product;
 
   return (
     <Transition
@@ -34,11 +34,22 @@ const Product: FC<ProductProps> = ({ product }) => {
             />
           </div>
           <div className="p-8">
-            <h3 className="capitalize truncate font-medium">{name}</h3>
+            <h3 className="capitalize truncate font-medium">{name} </h3>
             <p className="text-md font-bold text-gray-500">
               {formatCurrency(price)}
             </p>
           </div>
+        </div>
+        <div className="absolute top-3 left-3">
+          <span
+            className={`${
+              isNew
+                ? "block  bg-gray-800 text-amber-100 shadow-xl px-2 py-1 rounded-full text-xs"
+                : "hidden"
+            }`}
+          >
+            New
+          </span>
         </div>
         <div className="absolute top-3 right-3">
           <Carter product={product} />

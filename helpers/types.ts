@@ -3,6 +3,7 @@ export type IProduct = {
   name: string;
   price: string;
   image: Image;
+  new: string;
 };
 export type LoginRequest = {
   identifier: string;
@@ -39,6 +40,7 @@ export type Category = {
   name: string;
   type: string;
   image: Image;
+  dishes: IProduct;
 };
 export type CartItem = {
   id: number;
