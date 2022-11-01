@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { useState } from "react";
 import { CheckCircleIcon, XCircleIcon } from "@heroicons/react/solid";
 import useCommon from "../hooks/useCommon";
 import { useTranslation } from "react-i18next";
@@ -25,38 +25,38 @@ const FoodType = () => {
   };
 
   return (
-    <div className="relative flex items-center  justify-center lg:justify-between h-12  w-full  lg:w-64 mx-auto mt-4 text-yellow-400">
+    <div className="relative flex items-center  justify-center lg:justify-between h-12  w-full  lg:w-64 mx-auto mt-4 text-gray-800">
       {isVeg !== "null" && (
-        <div className="absolute right-16 top-1 lg:-right-8 lg:top-2 text-gray-700">
+        <div className="absolute right-16 top-1 lg:-right-8 lg:top-2 text-gray-300">
           <button
             onClick={handleClear}
             className="underline hover:text-gray-800"
             aria-label="clear-filter"
           >
-            <XCircleIcon className="w-6 h-6 text-gray-700" />
+            <XCircleIcon className="w-6 h-6 text-gray-400" />
           </button>
         </div>
       )}
       <button
         onClick={handleVeg}
-        className="relative w-1/4 lg:w-1/2 border-r text-sm lg:text-md font-semibold border-yellow-400 h-full  bg-gray-800   hover:bg-gray-900 duration-200  rounded-bl-full shadow-md shadow-yellow-200"
+        className="relative w-1/4 lg:w-1/2 border-r text-sm lg:text-md font-semibold  h-full  bg-yellow-400   hover:bg-yellow-500 duration-200  rounded-bl-xl"
       >
         {isVeg === "veg" && (
           <div className="absolute top-1 right-2">
-            <CheckCircleIcon className="w-4 h-4 text-green-600" />
+            <CheckCircleIcon className="w-4 h-4 text-gray-800" />
           </div>
         )}
         {t("veg")}
       </button>
       <button
         onClick={handleNonVeg}
-        className="relative w-1/4 lg:w-1/2 h-full text-sm lg:text-md font-semibold  duration-200 bg-gray-800 hover:bg-gray-900 rounded-br-full shadow-md shadow-yellow-200"
+        className="relative w-1/4 lg:w-1/2 h-full text-sm lg:text-md font-semibold  duration-200 bg-yellow-400 hover:bg-yellow-500 rounded-br-xl "
         name="clear-filter"
         aria-label="non-veg"
       >
         {isVeg === "non-veg" && (
           <div className="absolute top-1 right-2">
-            <CheckCircleIcon className="w-4 h-4 text-green-600" />
+            <CheckCircleIcon className="w-4 h-4 text-gray-800" />
           </div>
         )}
         {t("non-veg")}
