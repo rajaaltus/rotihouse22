@@ -37,7 +37,7 @@ const Product: FC<ProductProps> = ({ product }) => {
             <h3 className="capitalize truncate font-medium text-gray-400">
               {name}{" "}
             </h3>
-            <p className="text-md font-bold text-gray-500">
+            <p className="text-md font-bold text-gray-400">
               {formatCurrency(price)}
             </p>
           </div>
