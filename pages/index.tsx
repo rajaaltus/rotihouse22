@@ -28,14 +28,14 @@ const Home: NextPage = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="relative w-full h-full bg-white">
+      <main className="relative w-full h-full bg-black">
         <FloatingCart handleOpen={() => setOpen(true)} />
         <SideCart
           open={open}
           onClose={() => setOpen(false)}
           onOpen={() => setOpen(true)}
         />
-        <div className=" w-full min-h-screen">
+        <div className=" w-full min-h-screen bg-black">
           <div>
             <Header handleOpen={() => setOpen(true)} />
             <HeroSlider />
@@ -43,7 +43,7 @@ const Home: NextPage = () => {
           <div className=" sticky top-0 z-20">
             <Categories />
           </div>
-          <div className="mb-8 mt-24 lg:mt-32 px-8 lg:max-w-7xl mx-auto lg:px-0 min-h-screen">
+          <div className="mb-8 mt-24 lg:mt-32 px-8 lg:max-w-7xl mx-auto lg:px-0 min-h-screen ">
             <ProductGrid />
           </div>
         </div>

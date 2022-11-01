@@ -23,18 +23,20 @@ const Product: FC<ProductProps> = ({ product }) => {
       leaveFrom="scale-1"
       leaveTo="scale-0"
     >
-      <div className="relative w-full h-full bg-white rounded-lg shadow-2xl snap-start">
+      <div className="relative w-full h-full bg-black border-2 border-gray-900 rounded-lg shadow-2xl snap-start">
         <div className="flex flex-col justify-between h-full rounded-full">
           <div className="relative mt-8 mx-auto w-48 h-48 rounded-full text-center">
             <Image
               src={axios.defaults.baseURL + image.url}
               alt="image"
               layout="fill"
-              className="object-cover object-center rounded-full  scale-100 hover:scale-105 duration-500 ease-in-out"
+              className="object-cover object-center rounded-full  scale-100 hover:scale-105 duration-200 ease-in-out"
             />
           </div>
           <div className="p-8">
-            <h3 className="capitalize truncate font-medium">{name} </h3>
+            <h3 className="capitalize truncate font-medium text-gray-400">
+              {name}{" "}
+            </h3>
             <p className="text-md font-bold text-gray-500">
               {formatCurrency(price)}
             </p>

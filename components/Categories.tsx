@@ -9,7 +9,7 @@ const Categories = () => {
   const { setFilter, totalProducts } = useCommon();
 
   return (
-    <div className="relative w-full lg:w-full group h-24  bg-yellow-400 flex flex-col shadow-xl">
+    <div className="relative w-full lg:w-full group h-24  bg-yellow-400 flex flex-col ">
       <div className="absolute z-20 -bottom-12 w-full">
         <FoodType />
       </div>
