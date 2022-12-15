@@ -23,7 +23,7 @@ const Header: FC<HeaderProps> = ({ handleOpen }) => {
     }
   }, []);
   return (
-    <div className="sticky top-0 z-50 w-full h-16  bg-black px-4">
+    <div className="sticky top-0 z-50 w-full h-16  bg-yellow-400 border-b border-gray-100 border-opacity-20 px-4 bg-opacity-10 backdrop-blur-2xl">
       <div className="max-w-7xl mx-auto text-white flex items-center justify-between h-full">
         <div className="flex items-center space-x-2">
           <div className="bg-yellow-400 w-12 h-auto px-2 py-1 rounded-sm">
@@ -35,7 +35,7 @@ const Header: FC<HeaderProps> = ({ handleOpen }) => {
         </div>
         <div className="flex items-center space-x-2">
           <select
-            className="bg-black"
+            className="bg-black bg-opacity-10 backdrop-blur-2xl"
             onChange={handleLanguage}
             value={selectedLang}
           >

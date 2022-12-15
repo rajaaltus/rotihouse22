@@ -15,17 +15,17 @@ const CartItem: FC<CartItemProps> = ({ item }) => {
   const { total, removeProduct } = useCart();
   return (
     <div
-      className={`group w-full h-auto flex justify-start items-center bg-white py-4 md:py-7 border-b border-gray-100 relative last:border-b-0`}
+      className={`group w-full h-auto flex justify-start items-center  py-4 md:py-7 border-b border-gray-100 border-opacity-20 relative last:border-b-0`}
       title={item?.name}
     >
-      <div className="relative flex w-24 md:w-28 h-24 md:h-28 rounded-md overflow-hidden bg-gray-200 flex-shrink-0 cursor-pointer mx-4">
+      <div className="relative flex w-24 md:w-28 h-24 md:h-28 rounded-md overflow-hidden  flex-shrink-0 cursor-pointer mx-4 border border-gray-100 border-opacity-30">
         <Image
           src={axios.defaults.baseURL + item.image?.url}
           width={112}
           height={112}
           loading="eager"
           alt={item.name || "Product Image"}
-          className="bg-gray-300 object-cover"
+          className=" object-cover opacity-75"
         />
         <div
           className="absolute top-0 start-0 h-full w-full bg-black bg-opacity-30 md:bg-opacity-0 flex justify-center items-center transition duration-200 ease-in-out md:group-hover:bg-opacity-30"
@@ -37,20 +37,17 @@ const CartItem: FC<CartItemProps> = ({ item }) => {
       </div>
 
       <div className="flex flex-col w-full overflow-hidden">
-        <span className="text-md font-semibold text-indigo-800">
-          {item?.name}
-        </span>
-        <span className="text-xs font-medium uppercase text-gray-500 mb-2.5">
-          Unit price &middot;&nbsp;
+        <span className="text-md font-semibold text-white">{item?.name}</span>
+        <span className="text-xs font-medium uppercase text-yellow-100 mb-2.5">
           {formatCurrency(item.price)}
         </span>
 
-        <span className="font-semibold text-sm md:text-base text-heading leading-5">
-          {formatCurrency(item.price * item.qty)}
-        </span>
         <div className="w-1/2">
           <Carter product={item} />
         </div>
+        <span className="relative font-semibold text-sm md:text-base text-heading leading-5 text-yellow-500 py-1">
+          {formatCurrency(item.price * item.qty)}
+        </span>
       </div>
     </div>
   );

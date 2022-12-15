@@ -1,8 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
+  body {
+    @apply antialiased;
+  }
   h1  {
     @apply text-3xl font-semibold ;
   }
@@ -10,18 +14,18 @@
     @apply text-xl font-semibold py-2 text-indigo-800;
   }
   .btn {
-    @apply w-8 h-8 rounded-full bg-green-600 text-white;
+    @apply w-8 h-8 rounded-md bg-yellow-400 text-black;
   }
   .btn-lg {
-    @apply w-8 h-8 rounded-full flex items-center justify-center bg-green-600 text-white text-center;
+    @apply w-8 h-8 rounded-md flex items-center justify-center bg-green-600 text-white text-center;
   }
   .btn-full {
-    @apply w-full h-10 rounded-lg flex items-center justify-center  text-center  shadow-md hover:scale-95 active:scale-90 duration-150;
+    @apply w-full h-10 rounded-lg flex items-center justify-center  text-center  shadow-2xl  hover:scale-95 active:scale-90 duration-150;
   }
   input {
-    @apply w-full rounded-lg bg-gray-50 border border-gray-200 py-2 px-4;
+    @apply w-full rounded-lg bg-gray-50 border border-gray-200 py-2 px-4 focus:outline-none focus:ring-1 ring-yellow-400 bg-opacity-50  text-white placeholder:text-gray-600;
   }
   label {
-    @apply text-gray-500;
+    @apply text-gray-200;
   }
 }
