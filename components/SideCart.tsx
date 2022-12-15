@@ -101,8 +101,10 @@ const SideCart: FC<SideCartProps> = ({ open, onClose, onOpen }) => {
                   <div className="flex h-full flex-col justify-between overflow-y-scroll bg-yellow-400 bg-opacity-10 backdrop-blur-2xl border-l border-gray-100 border-opacity-20 py-6">
                     <div className="px-4 sm:px-6 shadow-2xl">
                       <Dialog.Title className="inline-flex items-center gap-2 w-full text-lg font-medium text-white border-b border-gray-100 border-opacity-20 ">
-                        <ShoppingBagIcon className="text-white w-6 h-6" />
-                        {t("shopping cart")}
+                        <>
+                          <ShoppingBagIcon className="text-white w-6 h-6" />
+                          {t("shopping cart")}
+                        </>
                       </Dialog.Title>
                     </div>
                     {cartItems.length > 0 ? (

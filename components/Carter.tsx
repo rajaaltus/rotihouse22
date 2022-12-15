@@ -7,6 +7,7 @@ import {
   TrashIcon,
 } from "@heroicons/react/solid";
 import { CartItem } from "../helpers/types";
+import { motion } from "framer-motion";
 
 interface CarterProps {
   product: CartItem;
@@ -79,14 +80,16 @@ const Carter: FC<CarterProps> = ({ product }) => {
       )}
 
       {isInCart && getQty(product) === 1 && (
-        <button
+        <motion.button
+          initial={{ x: -30 }}
+          animate={{ x: 0 }}
           className="trash btn flex items-center justify-center"
           onClick={() => removeProduct(product)}
           type="button"
           aria-label="remove"
         >
           <TrashIcon className="w-5 h-5" />
-        </button>
+        </motion.button>
       )}
     </div>
   );
