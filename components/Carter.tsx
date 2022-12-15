@@ -1,6 +1,11 @@
 import React, { FC, useEffect, useState } from "react";
 import { useCart } from "../hooks/useCart";
-import { PlusCircleIcon, TrashIcon } from "@heroicons/react/solid";
+import {
+  MinusIcon,
+  PlusCircleIcon,
+  PlusIcon,
+  TrashIcon,
+} from "@heroicons/react/solid";
 import { CartItem } from "../helpers/types";
 
 interface CarterProps {
@@ -37,15 +42,15 @@ const Carter: FC<CarterProps> = ({ product }) => {
   }, [cartItems, product.id]);
 
   return (
-    <div className="flex items-center justify-between flex-row-reverse bg-red-600 rounded-full bg-opacity-80">
+    <div className="flex items-center justify-between flex-row-reverse bg-red-100 bg-opacity-30 rounded-md">
       {isInCart && getQty(product) > 0 && (
         <button
-          className="btn"
+          className="btn flex items-center justify-center"
           onClick={() => increase(product)}
           type="button"
           aria-label="add"
         >
-          +
+          <PlusIcon className="w-5 h-5" />
         </button>
       )}
 
@@ -64,12 +69,12 @@ const Carter: FC<CarterProps> = ({ product }) => {
 
       {isInCart && getQty(product) > 1 && (
         <button
-          className="btn"
+          className="btn flex items-center justify-center"
           onClick={() => decrease(product)}
           type="button"
           aria-label="reduce"
         >
-          -
+          <MinusIcon className="w-5 h-5" />
         </button>
       )}
 
@@ -80,7 +85,7 @@ const Carter: FC<CarterProps> = ({ product }) => {
           type="button"
           aria-label="remove"
         >
-          <TrashIcon className="w-6 h-6" />
+          <TrashIcon className="w-5 h-5" />
         </button>
       )}
     </div>

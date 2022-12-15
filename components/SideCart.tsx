@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect, FC } from "react";
 import { Transition, Dialog } from "@headlessui/react";
-import { XIcon } from "@heroicons/react/solid";
+import { ShoppingBagIcon, XIcon } from "@heroicons/react/solid";
 import { useCart } from "../hooks/useCart";
 import CartItem from "./CartItem";
 import { formatCurrency } from "../helpers/util";
@@ -43,8 +43,8 @@ const SideCart: FC<SideCartProps> = ({ open, onClose, onOpen }) => {
           onModalOpen={() => setShow(true)}
         >
           <>
-            <h2>Login</h2>
-            <hr className="py-4" />
+            <h2 className="text-white">Login</h2>
+            <hr className="py-4 opacity-30" />
             <LoginForm />
           </>
         </Modal>
@@ -65,7 +65,7 @@ const SideCart: FC<SideCartProps> = ({ open, onClose, onOpen }) => {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Dialog.Overlay className="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+              <Dialog.Overlay className="absolute inset-0 bg-black bg-opacity-0 transition-opacity" />
             </Transition.Child>
             <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
               <Transition.Child
@@ -98,14 +98,16 @@ const SideCart: FC<SideCartProps> = ({ open, onClose, onOpen }) => {
                       </button>
                     </div>
                   </Transition.Child>
-                  <div className="flex h-full flex-col justify-between overflow-y-scroll bg-white py-6 shadow-xl">
-                    <div className="px-4 sm:px-6">
-                      <Dialog.Title className="text-lg font-medium text-gray-900">
+                  <div className="flex h-full flex-col justify-between overflow-y-scroll bg-yellow-400 bg-opacity-10 backdrop-blur-2xl border-l border-gray-100 border-opacity-20 py-6">
+                    <div className="px-4 sm:px-6 shadow-2xl">
+                      <Dialog.Title className="inline-flex items-center gap-2 w-full text-lg font-medium text-white border-b border-gray-100 border-opacity-20 ">
+                        <ShoppingBagIcon className="text-white w-6 h-6" />
                         {t("shopping cart")}
                       </Dialog.Title>
                     </div>
                     {cartItems.length > 0 ? (
-                      <div className="relative mt-6 flex-1 px-4 sm:px-6">
+                      <div className="relative mt-6 flex-1 px-4 sm:px-6 max-h-screen overflow-y-scroll">
+                        <div className="sticky z-50 top-0 h-8 w-full "></div>
                         {cartItems.map((item) => (
                           <CartItem item={item} key={item.id} />
                         ))}
@@ -114,7 +116,7 @@ const SideCart: FC<SideCartProps> = ({ open, onClose, onOpen }) => {
                       <div className="relative mt-6 flex-1 px-4 sm:px-6">
                         <div className="w-full h-full flex flex-col items-center justify-center space-y-2">
                           <EmptyCart />
-                          <span className="w-full text-center  font-bold pt-4 text-slate-500">
+                          <span className="w-full text-center  font-bold pt-4 text-slate-200">
                             {t("your cart is empty")}
                           </span>
                         </div>
@@ -129,11 +131,11 @@ const SideCart: FC<SideCartProps> = ({ open, onClose, onOpen }) => {
                       )}
                       <button
                         disabled={cartItems.length == 0}
-                        className="relative w-full bg-green-700 rounded-lg py-3 text-white text-center disabled:bg-slate-500 group"
+                        className="relative w-full bg-yellow-500 rounded-lg py-3 text-black text-center disabled:bg-slate-500 group"
                         onClick={handleCheckout}
                       >
                         <span className="lg:pr-2 pr-8">{t("checkout")}</span>
-                        <span className="absolute right-2 top-2  bg-green-800 group-disabled:bg-slate-600 px-2 py-1 rounded-lg">
+                        <span className="absolute right-2 top-2  bg-green-300 group-disabled:bg-slate-600 px-2 py-1 rounded-lg">
                           {formatCurrency(total)}
                         </span>
                       </button>
