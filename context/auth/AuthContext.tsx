@@ -53,9 +53,9 @@ const AuthContextProvider = ({ children }: any) => {
   };
 
   const AuthContextValue = {
+    ...state,
     login,
     authorize,
-    ...state,
   };
   return (
     <AuthContext.Provider value={AuthContextValue}>
