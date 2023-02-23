@@ -31,6 +31,8 @@ const Product: FC<ProductProps> = ({ product }) => {
               alt="image"
               layout="fill"
               className="object-cover object-center rounded-full  scale-100 hover:scale-105 duration-200 ease-in-out"
+              blurDataURL="/image_placeholder.svg"
+              placeholder="blur"
             />
           </div>
           <div className="p-8">

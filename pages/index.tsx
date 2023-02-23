@@ -35,7 +35,7 @@ const Home: NextPage = () => {
           onClose={() => setOpen(false)}
           onOpen={() => setOpen(true)}
         />
-        <div className=" w-full min-h-screen bg-black">
+        <div className="w-full min-h-screen bg-black">
           <div>
             <Header handleOpen={() => setOpen(true)} />
             <HeroSlider />

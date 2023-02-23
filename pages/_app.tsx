@@ -9,13 +9,13 @@ import "../i18n";
 function MyApp({ Component, pageProps }: AppProps) {
   axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
   return (
-    <CartContextProvider>
-      <CommonContextProvider>
+    <CommonContextProvider>
+      <CartContextProvider>
         <AuthContextProvider>
           <Component {...pageProps} />
         </AuthContextProvider>
-      </CommonContextProvider>
-    </CartContextProvider>
+      </CartContextProvider>
+    </CommonContextProvider>
   );
 }
 

@@ -29,7 +29,7 @@ const Header: FC<HeaderProps> = ({ handleOpen }) => {
           <div className="bg-yellow-400 w-12 h-auto px-2 py-1 rounded-sm">
             <Logo />
           </div>
-          <span className="brand text-2xl font-semibold tracking-wide">
+          <span className="brand text-2xl font-semibold tracking-wide capitalize">
             {t("rotihouse")}
           </span>
         </div>
@@ -43,8 +43,8 @@ const Header: FC<HeaderProps> = ({ handleOpen }) => {
             <option value="lo">LA</option>
           </select>
 
-          <div className="text-gray-600"> | </div>
-          <button onClick={handleOpen}>
+          <div className="text-gray-600 "> | </div>
+          <button onClick={handleOpen} className="capitalize">
             {t("cart")} ({itemCount})
           </button>
         </div>

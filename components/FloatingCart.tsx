@@ -11,7 +11,7 @@ const FloatingCart: FC<IFloatingCart> = ({ handleOpen }) => {
   const { itemCount } = useCart();
   return (
     <>
-      {itemCount > 0 ? (
+      {itemCount > 0 && (
         <motion.div
           onClick={handleOpen}
           className="fixed top-1/2 right-8 z-50 h-auto hover:cursor-pointer group"
@@ -26,8 +26,6 @@ const FloatingCart: FC<IFloatingCart> = ({ handleOpen }) => {
             <ShoppingCartIcon className="w-6 h-6 text-black" />
           </div>
         </motion.div>
-      ) : (
-        <></>
       )}
     </>
   );

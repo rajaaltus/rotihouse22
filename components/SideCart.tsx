@@ -100,11 +100,9 @@ const SideCart: FC<SideCartProps> = ({ open, onClose, onOpen }) => {
                   </Transition.Child>
                   <div className="flex h-full flex-col justify-between overflow-y-scroll bg-yellow-400 bg-opacity-10 backdrop-blur-2xl border-l border-gray-100 border-opacity-20 py-6">
                     <div className="px-4 sm:px-6 shadow-2xl">
-                      <Dialog.Title className="inline-flex items-center gap-2 w-full text-lg font-medium text-white border-b border-gray-100 border-opacity-20 ">
-                        <>
-                          <ShoppingBagIcon className="text-white w-6 h-6" />
-                          {t("shopping cart")}
-                        </>
+                      <Dialog.Title className="inline-flex capitalize items-center gap-2 w-full text-lg font-medium text-white border-b border-gray-100 border-opacity-20 ">
+                        <ShoppingBagIcon className="text-white w-6 h-6" />
+                        <span>{t("shopping cart")}</span>
                       </Dialog.Title>
                     </div>
                     {cartItems.length > 0 ? (
@@ -136,7 +134,9 @@ const SideCart: FC<SideCartProps> = ({ open, onClose, onOpen }) => {
                         className="relative w-full bg-yellow-500 rounded-lg py-3 text-black text-center disabled:bg-slate-500 group"
                         onClick={handleCheckout}
                       >
-                        <span className="lg:pr-2 pr-8">{t("checkout")}</span>
+                        <span className="lg:pr-2 pr-8 capitalize">
+                          {t("checkout")}
+                        </span>
                         <span className="absolute right-2 top-2  bg-green-300 group-disabled:bg-slate-600 px-2 py-1 rounded-lg">
                           {formatCurrency(total)}
                         </span>
