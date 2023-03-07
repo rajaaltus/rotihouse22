@@ -10,21 +10,22 @@ const LoginForm = () => {
   const { login, authReady } = useAuth();
   const { t } = useTranslation(["login"]);
   const { register, handleSubmit } = useForm<LoginRequest>();
-  const submitHandler = (data: LoginRequest) => {
-    login(data);
+  const submitHandler = async (data: LoginRequest) => {
+    const res = await login(data);
+    console.log(res);
   };
 
   return (
     <div className="w-full  h-auto">
       <div className="w-full py-4">
         <div className="flex flex-col items-center justify-between space-y-4">
-          <Link href={`${process.env.NEXT_PUBLIC_API_URL}/connect/facebook`}>
+          <Link href={`${process.env.API_URL}/connect/facebook`}>
             <a className="btn-full bg-indigo-700 text-white hover:bg-indigo-800  flex items-center space-x-2">
               <Image src="/images/fb.svg" alt={"fb"} width={32} height={32} />
               <span>{t("facebook")}</span>
             </a>
           </Link>
-          <Link href={`${process.env.NEXT_PUBLIC_API_URL}/connect/google`}>
+          <Link href={`${process.env.API_URL}/connect/google`}>
             <a className="btn-full bg-white  text-gray-700 hover:bg-gray-100 flex items-center space-x-2">
               <Image
                 src="/images/google.svg"

@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import Image from "next/image";
-import { Navigation } from "swiper";
+import { Navigation, Autoplay } from "swiper";
 
 const sliderImages = [
   {
@@ -31,7 +31,10 @@ const HeroSlider = () => {
       rewind={true}
       navigation={true}
       className="mySwiper   h-auto"
-      modules={[Navigation]}
+      modules={[Autoplay, Navigation]}
+      autoplay={{
+        delay: 2500,
+      }}
     >
       {sliderImages.map((slider) => (
         <SwiperSlide key={slider.id}>

@@ -16,7 +16,7 @@ const AuthContextProvider = ({ children }: any) => {
   const [state, dispatch] = useReducer(AuthReducer, inititalState);
 
   const login = (data: LoginRequest) => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/local`, {
+    fetch(`${process.env.API_URL}/auth/local`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -35,7 +35,7 @@ const AuthContextProvider = ({ children }: any) => {
 
   const authorize = (access_token: string, provider: string) => {
     fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/auth/${provider}/callback?access_token=${access_token}`,
+      `${process.env.API_URL}/auth/${provider}/callback?access_token=${access_token}`,
       {
         headers: {
           Accept: "application/json",

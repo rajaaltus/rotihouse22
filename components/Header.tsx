@@ -9,6 +9,7 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps> = ({ handleOpen }) => {
   const [selectedLang, setSelectedLang] = useState("");
+  const [user, setUser] = useState({ username: "" });
   const { i18n, t } = useTranslation(["common"]);
   const { itemCount } = useCart();
   const handleLanguage = (e: any) => {
@@ -21,7 +22,11 @@ const Header: FC<HeaderProps> = ({ handleOpen }) => {
     if (val?.length > 2) {
       i18next.changeLanguage("en");
     }
+    const userRaw =
+      sessionStorage.getItem("user") && sessionStorage.getItem("user");
+    setUser({ username: userRaw && JSON.parse(userRaw)["username"] });
   }, []);
+
   return (
     <div className="sticky top-0 z-50 w-full h-16  bg-yellow-400 border-b border-gray-100 border-opacity-20 px-4 bg-opacity-10 backdrop-blur-2xl">
       <div className="max-w-7xl mx-auto text-white flex items-center justify-between h-full">
@@ -44,9 +49,17 @@ const Header: FC<HeaderProps> = ({ handleOpen }) => {
           </select>
 
           <div className="text-gray-600 "> | </div>
-          <button onClick={handleOpen} className="capitalize">
+          <button onClick={handleOpen}>
             {t("cart")} ({itemCount})
           </button>
+          {user ? (
+            <>
+              <div className="text-gray-600 "> | </div>
+              <span className="px-2">{user.username}</span>
+            </>
+          ) : (
+            <span>Loading...</span>
+          )}
         </div>
       </div>
     </div>
