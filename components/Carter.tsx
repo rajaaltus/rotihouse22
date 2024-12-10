@@ -6,11 +6,11 @@ import {
   PlusIcon,
   TrashIcon,
 } from "@heroicons/react/solid";
-import { CartItem } from "../helpers/types";
+import { CartItemType } from "../helpers/types";
 import { motion } from "framer-motion";
 
 interface CarterProps {
-  product: CartItem;
+  product: CartItemType;
 }
 const Carter: FC<CarterProps> = ({ product }) => {
   const [isInCart, setIsInCart] = useState(false);
@@ -22,12 +22,12 @@ const Carter: FC<CarterProps> = ({ product }) => {
     removeProduct,
   } = useCart();
 
-  const getQty = (product: CartItem) => {
+  const getQty = (product: CartItemType) => {
     return (
       cartItems[
-        cartItems.findIndex((item: CartItem) => item.id === product.id)
+        cartItems.findIndex((item: CartItemType) => item.id === product.id)
       ] &&
-      cartItems[cartItems.findIndex((item: CartItem) => item.id === product.id)]
+      cartItems[cartItems.findIndex((item: CartItemType) => item.id === product.id)]
         .qty
     );
   };
@@ -36,7 +36,7 @@ const Carter: FC<CarterProps> = ({ product }) => {
     const check =
       (cartItems &&
         cartItems[
-          cartItems.findIndex((item: CartItem) => item.id === product.id)
+          cartItems.findIndex((item: CartItemType) => item.id === product.id)
         ]) ||
       null;
     check ? setIsInCart(true) : setIsInCart(false);

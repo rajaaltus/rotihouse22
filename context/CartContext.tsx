@@ -1,8 +1,8 @@
 import { createContext, useReducer } from "react";
-import { CartItem, CartState } from "../helpers/types";
+import { CartItemType, CartState } from "../helpers/types";
 import { CartReducer, sumItems } from "./CartReducer";
 
-let storage: CartItem[] = [];
+let storage: CartItemType[] = [];
 
 if (typeof window !== "undefined") {
   storage = localStorage.getItem("cart")
@@ -24,19 +24,19 @@ export const CartContext = createContext<CartState>(initialState);
 const CartContextProvider = ({ children }: any) => {
   const [state, dispatch] = useReducer(CartReducer, initialState);
 
-  const increase = (payload: CartItem) => {
+  const increase = (payload: CartItemType) => {
     dispatch({ type: "INCREASE", payload });
   };
 
-  const decrease = (payload: CartItem) => {
+  const decrease = (payload: CartItemType) => {
     dispatch({ type: "DECREASE", payload });
   };
 
-  const addProduct = (payload: CartItem) => {
+  const addProduct = (payload: CartItemType) => {
     dispatch({ type: "ADD_ITEM", payload });
   };
 
-  const removeProduct = (payload: CartItem) => {
+  const removeProduct = (payload: CartItemType) => {
     dispatch({ type: "REMOVE_ITEM", payload });
   };
 

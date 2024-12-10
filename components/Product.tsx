@@ -4,10 +4,10 @@ import React, { FC, useEffect, useState } from "react";
 import Carter from "./Carter";
 import { formatCurrency } from "../helpers/util";
 import { Transition } from "@headlessui/react";
-import { CartItem } from "../helpers/types";
+import { CartItemType } from "../helpers/types";
 
 interface ProductProps {
-  product: CartItem;
+  product: CartItemType;
   key: Number;
 }
 const Product: FC<ProductProps> = ({ product }) => {

@@ -20,10 +20,10 @@ export type AuthState = {
 
 export type CommonState = {
   filterKey: number;
-  filteredProducts: CartItem[];
-  allProducts: CartItem[];
+  filteredProducts: CartItemType[];
+  allProducts: CartItemType[];
   totalProducts: number;
-  initFilter: (payload: CartItem[]) => void;
+  initFilter: (payload: CartItemType[]) => void;
   setFilter: (payload: number) => void;
   typeFilter: (payload: string) => void;
   clearFilter: () => void;
@@ -42,7 +42,7 @@ export type Category = {
   image: Image;
   dishes: IProduct;
 };
-export type CartItem = {
+export type CartItemType = {
   id: number;
   name: string;
   description: string;
@@ -56,12 +56,12 @@ export type CartItem = {
   qty: number;
 };
 export type CartState = {
-  cartItems: CartItem[];
+  cartItems: CartItemType[];
   checkout: boolean;
   itemCount: number;
   total: string;
-  increase: (payload: CartItem) => void;
-  decrease: (payload: CartItem) => void;
-  addProduct: (payload: CartItem) => void;
-  removeProduct: (payload: CartItem) => void;
+  increase: (payload: CartItemType) => void;
+  decrease: (payload: CartItemType) => void;
+  addProduct: (payload: CartItemType) => void;
+  removeProduct: (payload: CartItemType) => void;
 };

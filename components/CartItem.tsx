@@ -6,10 +6,10 @@ import Carter from "./Carter";
 import axios from "axios";
 import { formatCurrency } from "../helpers/util";
 import Modal from "./Modal";
-import type { CartItem } from "../helpers/types";
+import type { CartItemType } from "../helpers/types";
 
 interface CartItemProps {
-  item: CartItem;
+  item: CartItemType;
 }
 const CartItem: FC<CartItemProps> = ({ item }) => {
   const { total, removeProduct } = useCart();

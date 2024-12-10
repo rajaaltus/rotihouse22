@@ -1,5 +1,5 @@
 import { createContext, useReducer } from "react";
-import { CartItem, CommonState } from "../helpers/types";
+import { CartItemType, CommonState } from "../helpers/types";
 import { CommonReducer } from "./CommonReducer";
 
 export const initialState: CommonState = {
@@ -17,7 +17,7 @@ export const CommonContext = createContext<CommonState>(initialState);
 const CommonContextProvider = ({ children }: any) => {
   const [state, dispatch] = useReducer(CommonReducer, initialState);
 
-  const initFilter = (payload: CartItem[]) => {
+  const initFilter = (payload: CartItemType[]) => {
     dispatch({ type: "INIT_FILTER", payload });
   };
   const setFilter = (payload: number) => {

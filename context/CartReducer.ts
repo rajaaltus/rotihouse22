@@ -1,4 +1,4 @@
-import { CartItem, CartState } from "../helpers/types";
+import { CartItemType, CartState } from "../helpers/types";
 
 const Storage = (cartItems: any) => {
   if (typeof window !== "undefined") {
@@ -8,7 +8,7 @@ const Storage = (cartItems: any) => {
     );
   }
 };
-export const sumItems = (cartItems: CartItem[]) => {
+export const sumItems = (cartItems: CartItemType[]) => {
   Storage(cartItems);
   let itemCount = cartItems?.reduce(
     (total: number, product: any) => total + product.qty,
@@ -16,7 +16,7 @@ export const sumItems = (cartItems: CartItem[]) => {
   );
   let total = cartItems
     ?.reduce(
-      (total: number, product: CartItem) => total + product.price * product.qty,
+      (total: number, product: CartItemType) => total + product.price * product.qty,
       0
     )
     .toFixed(2);
@@ -24,10 +24,10 @@ export const sumItems = (cartItems: CartItem[]) => {
 };
 
 type CartActions =
-  | { type: "ADD_ITEM"; payload: CartItem }
-  | { type: "INCREASE"; payload: CartItem }
-  | { type: "DECREASE"; payload: CartItem }
-  | { type: "REMOVE_ITEM"; payload: CartItem };
+  | { type: "ADD_ITEM"; payload: CartItemType }
+  | { type: "INCREASE"; payload: CartItemType }
+  | { type: "DECREASE"; payload: CartItemType }
+  | { type: "REMOVE_ITEM"; payload: CartItemType };
 
 export const CartReducer = (state: CartState, action: CartActions) => {
   switch (action.type) {

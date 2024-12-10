@@ -3,7 +3,7 @@ import Product from "./Product";
 import { useProduct } from "../hooks/useProduct";
 import ProductLoader from "./ProductLoader";
 import useCommon from "../hooks/useCommon";
-import { CartItem } from "../helpers/types";
+import { CartItemType } from "../helpers/types";
 import FoodType from "./FoodType";
 
 const ProductGrid = () => {
@@ -25,7 +25,7 @@ const ProductGrid = () => {
         )}
 
         {!loading && products && products.length > 0 ? (
-          products.map((item: CartItem) => (
+          products.map((item: CartItemType) => (
             <Fragment key={item.id}>
               <Product product={item} key={item.id} />
             </Fragment>
