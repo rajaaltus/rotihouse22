@@ -5,13 +5,14 @@ import WhatsappIcon from "../components/icons/whatsapp-icon";
 import { useCart } from "../hooks/useCart";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
+import { useAuth } from "../context/AuthContext";
 
 const Checkout = () => {
   const { cartItems: items, total } = useCart();
   const { t } = useTranslation(["common"]);
   const [downloadLink, setDownloadLink] = useState("");
-  const [user, setUser] = useState({ username: "" });
-
+  // const [user, setUser] = useState({ username: "" });
+  const { user } = useAuth();
   const filteredItems = items?.map(
     (item, i) => `${i + 1}.${item.name}-${item.qty}`
   );
@@ -19,7 +20,7 @@ const Checkout = () => {
   const makeOrder = () => {
     const data = new Blob(
       [
-        `Hi, ${user?.username}, Your Order is: \n`,
+        `Hi, ${user?.displayName}, Your Order is: \n`,
         filteredItems.join("\n"),
         `\n Total: ${total}`,
       ],
@@ -35,13 +36,14 @@ const Checkout = () => {
     setDownloadLink(window.URL.createObjectURL(data));
   };
   useEffect(() => {
-    setUser(JSON.parse(sessionStorage.getItem("user") || "{}"));
+    // setUser(JSON.parse(sessionStorage.getItem("user") || "{}"));
     makeOrder();
     //eslint-disable-next-line
-  }, []);
+  }, [user]);
+  console.log({user});
   return (
     <div className="mt-48 w-full px-6 lg:px-32 h-full">
-      {user && <Address username={user?.username || t("customer")} />}
+      {user && <Address username={user?.displayName || t("customer")} />}
       {items?.map((item, index) => (
         <div
           key={index}

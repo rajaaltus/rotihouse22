@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import AuthContextProvider from "../context/auth/AuthContext";
+import { AuthContextProvider } from '../context/AuthContext';
 import axios from "axios";
 import CommonContextProvider from "../context/CommonContext";
 import CartContextProvider from "../context/CartContext";

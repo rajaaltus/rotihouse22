@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import { useAuth } from "../hooks/useAuth";
 import Modal from "./Modal";
 import { useTranslation } from "react-i18next";
+import Login from "./Login";
 
 interface SideCartProps {
   open: boolean;
@@ -21,19 +22,19 @@ const SideCart: FC<SideCartProps> = ({ open, onClose, onOpen }) => {
   const { t } = useTranslation(["common"]);
   const { cartItems, total } = useCart();
   const [show, setShow] = useState(false);
-  const { authReady } = useAuth();
+  const { user } = useAuth();
   const router = useRouter();
 
   const handleCheckout = () => {
-    authReady ? router.push("/checkout") : setShow(true);
+    user ? router.push("/checkout") : setShow(true);
   };
 
   const handleClose = () => {
-    authReady && setShow(false);
+    user && setShow(false);
   };
   useEffect(() => {
-    authReady && setShow(false);
-  }, [authReady]);
+    user && setShow(false);
+  }, [user]);
   return (
     <>
       {show && (
@@ -45,7 +46,7 @@ const SideCart: FC<SideCartProps> = ({ open, onClose, onOpen }) => {
           <>
             <h2 className="text-white">Login</h2>
             <hr className="py-4 opacity-30" />
-            <LoginForm />
+            <Login />
           </>
         </Modal>
       )}
@@ -124,7 +125,7 @@ const SideCart: FC<SideCartProps> = ({ open, onClose, onOpen }) => {
                     )}
 
                     <div className="relative px-8">
-                      {authReady && (
+                      {user && (
                         <div className="absolute top-1/2">
                           <span>Login Success &amp; Ready to checkout</span>
                         </div>
