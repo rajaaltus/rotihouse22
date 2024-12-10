@@ -27,7 +27,7 @@ const Product: FC<ProductProps> = ({ product }) => {
         <div className="flex flex-col justify-between h-full rounded-full">
           <div className="relative mt-8 mx-auto w-48 h-48 rounded-full text-center">
             <Image
-              src={axios.defaults.baseURL + image.url}
+              src={image?.url || "/image_placeholder.svg"}
               alt="image"
               layout="fill"
               className="object-cover object-center rounded-full  scale-100 hover:scale-105 duration-200 ease-in-out"

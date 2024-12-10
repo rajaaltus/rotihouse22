@@ -8,6 +8,7 @@ type CommonAction =
 
 export const CommonReducer = (state: CommonState, action: CommonAction) => {
   switch (action.type) {
+    
     case "INIT_FILTER": {
       return {
         ...state,
@@ -22,19 +23,19 @@ export const CommonReducer = (state: CommonState, action: CommonAction) => {
         ...state,
         filterKey: action.payload,
         filteredProducts: state.allProducts.filter(
-          (item: any) => item.category.id === action.payload
+          (item: any) => item?.category?.id === action.payload || (action.payload === 0 && !item.category)
         ),
       };
     case "TYPE_FILTER":
       if (state.filterKey !== 0) {
         state.filteredProducts = state.allProducts.filter(
-          (item: any) => item.category.id === state.filterKey
+          (item: any) => item?.category?.id === state.filterKey
         );
       }
       return {
         ...state,
         filteredProducts: state.filteredProducts.filter(
-          (item: any) => item.type === action.payload
+          (item: any) => item?.type === action.payload
         ),
       };
     case "CLEAR_FILTER":

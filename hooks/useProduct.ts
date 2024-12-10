@@ -1,19 +1,23 @@
-import axios from "axios";
 import useSWR from "swr";
 import useCommon from "./useCommon";
 
-const fetcher = (url: string) => axios.get(url).then((res) => res.data);
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-export const useProduct = (url: string) => {
+export const useProduct = (category?: number) => {
+  const baseUrl = '/api/products';
+  const url = category ? `${baseUrl}?category=${category}` : baseUrl;
+  
   const { data, error } = useSWR(url, fetcher);
   const { initFilter, filteredProducts } = useCommon();
 
-  const loading = !data && !error;
-
-  data && filteredProducts?.length === 0 && initFilter(data);
+  // Initialize filter when data is available
+  if (data && (!filteredProducts || filteredProducts.length === 0)) {
+    initFilter(data);
+  }
+  
   return {
     products: data,
     error,
-    loading,
+    loading: !data && !error,
   };
 };

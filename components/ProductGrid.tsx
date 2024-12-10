@@ -1,13 +1,14 @@
-import React, { Fragment, Suspense, useEffect, useState } from "react";
+import React, { Fragment } from "react";
 import Product from "./Product";
 import { useProduct } from "../hooks/useProduct";
 import ProductLoader from "./ProductLoader";
 import useCommon from "../hooks/useCommon";
 import { CartItem } from "../helpers/types";
 import FoodType from "./FoodType";
+
 const ProductGrid = () => {
-  const { loading } = useProduct("/dishes?active=true&_sort=new:desc");
-  const { filteredProducts } = useCommon();
+  const { filterKey } = useCommon();
+  const { products, loading } = useProduct(filterKey);
 
   return (
     <>
@@ -23,8 +24,8 @@ const ProductGrid = () => {
           </>
         )}
 
-        {!loading && filteredProducts && filteredProducts.length > 0 ? (
-          filteredProducts.map((item: CartItem) => (
+        {!loading && products && products.length > 0 ? (
+          products.map((item: CartItem) => (
             <Fragment key={item.id}>
               <Product product={item} key={item.id} />
             </Fragment>
@@ -33,7 +34,7 @@ const ProductGrid = () => {
           <div>No Products found!</div>
         )}
       </div>
-      <div className="sticky z-20 bottom-0 w-full  flex items-center justify-center border-gray-100 border-b border-opacity-10">
+      <div className="sticky z-20 bottom-0 w-full flex items-center justify-center border-gray-100 border-b border-opacity-10">
         <FoodType />
       </div>
     </>
