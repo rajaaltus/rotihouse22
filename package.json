@@ -15,6 +15,7 @@
     "@heroicons/react": "^1.0.6",
     "@libsql/client": "^0.14.0",
     "axios": "^0.27.2",
+    "dotenv": "^16.4.7",
     "drizzle-orm": "^0.38.0",
     "firebase": "^11.0.2",
     "framer-motion": "^7.6.7",
