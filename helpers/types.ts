@@ -12,7 +12,7 @@ export type LoginRequest = {
 
 export type AuthState = {
   authReady: boolean;
-  user: {};
+  user: {} | null;
   error: string;
   authorize: (access_token: string | string[], provider: string) => void;
   login: (data: LoginRequest) => void;

@@ -18,6 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','${process.env.GTM_ID}'); `}
       </Script>
+      <Script defer src="https://analytics.bigweb.digital/script.js" data-website-id="a59faf96-5784-4424-a6dc-3dd81436c885" />
       <CommonContextProvider>
         <CartContextProvider>
           <AuthContextProvider>

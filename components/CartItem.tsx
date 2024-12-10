@@ -6,7 +6,7 @@ import Carter from "./Carter";
 import axios from "axios";
 import { formatCurrency } from "../helpers/util";
 import Modal from "./Modal";
-import { CartItem } from "../helpers/types";
+import type { CartItem } from "../helpers/types";
 
 interface CartItemProps {
   item: CartItem;
@@ -20,7 +20,7 @@ const CartItem: FC<CartItemProps> = ({ item }) => {
     >
       <div className="relative flex w-24 md:w-28 h-24 md:h-28 rounded-md overflow-hidden  flex-shrink-0 cursor-pointer mx-4 border border-gray-100 border-opacity-30">
         <Image
-          src={axios.defaults.baseURL + item.image?.url}
+          src={item.image?.url}
           width={112}
           height={112}
           loading="eager"

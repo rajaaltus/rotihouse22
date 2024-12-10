@@ -4,7 +4,7 @@ import { AuthReducer } from "./AuthReducer";
 
 export const inititalState: AuthState = {
   authReady: false,
-  user: {},
+  user: null,
   error: "",
   authorize: () => {},
   login: () => {},

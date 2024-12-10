@@ -70,7 +70,7 @@ const Checkout = () => {
         <ReactWhatsapp
           number="+8562058026838"
           message={`Name: ${
-            user?.username
+            user?.displayName
           },\nMy Order is:\n${filteredItems.join("\n")}\nTotal: ${total}`}
           element="button"
         >
