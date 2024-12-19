@@ -10,7 +10,7 @@ const Footer = () => {
     <div className="w-full lg:max-w-7xl mx-auto py-12 text-gray-500 ">
       <div className="w-full h-12  flex lg:flex-row flex-col  space-y-3 lg:space-y-0 items-center justify-center lg:justify-between px-8  lg:px-0">
         <div className="text-xs lg:text-sm">
-          © {t("copyrights")} - {t("rotihouse")} {t("indian restaurant")}. 2022.
+          © {t("copyrights")} - {t("rotihouse")} {t("indian restaurant")}. 2025.
         </div>
         <div className="text-xs lg:text-sm">
           {t("made with")} &#10084;&#65039; {t("by")}{" "}
