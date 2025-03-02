@@ -1,3 +1,4 @@
+'use client';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { 
   createUserWithEmailAndPassword,
@@ -8,6 +9,7 @@ import {
   User
 } from 'firebase/auth';
 import { auth, googleProvider } from '../src/config/firebase';
+import useAppCheck from '../hooks/use-app-check';
 
 const AuthContext = createContext<any>({});
 
@@ -17,6 +19,7 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
+   const isAppCheckReady = useAppCheck();
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
